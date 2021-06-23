@@ -46,9 +46,11 @@ class AdminUserController extends BackendController
 
             }
 
-            
+
             if (AdminUser::create($data)) {
-                echo "success";
+                return redirect()->route('admin-users')->with('success', 'Data was inserted');
+            } else {
+                return redirect()->back()->with('error', 'Data was  not inserted');
             }
         }
     }

@@ -32,7 +32,7 @@
                         <div class="x_content">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1>Show</h1>
+                                    @include('backend.layouts.message')
                                 </div>
                             </div>
                         </div>

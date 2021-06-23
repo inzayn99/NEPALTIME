@@ -32,7 +32,9 @@
                         <div class="x_content">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="{{route('add-admin-user')}}" method="post" enctype="multipart/form-data">
+                                    @include('backend.layouts.message')
+                                    <form action="{{route('add-admin-user')}}" method="post"
+                                          enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="name">Name: <a
@@ -65,7 +67,8 @@
                                         <div class="form-group">
                                             <label for="password_confirmation">Confirm Password: <a
                                                     style="color: red;">{{$errors->first('password_confirmation')}}</a></label>
-                                            <input type="password" name="password_confirmation" class="form-control form-control-sm"
+                                            <input type="password" name="password_confirmation"
+                                                   class="form-control form-control-sm"
                                                    id="password_confirmation" value="{{old('password_confirmation')}}">
                                         </div>
 
@@ -76,7 +79,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                           <button class="btn btn-success">Add Record</button>
+                                            <button class="btn btn-success">Add Record</button>
                                         </div>
 
 
