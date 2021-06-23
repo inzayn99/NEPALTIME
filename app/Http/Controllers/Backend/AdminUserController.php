@@ -33,6 +33,20 @@ class AdminUserController extends BackendController
             $data['email'] = $request->email;
             $data['password'] = bcrypt($request->password);
 
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $ext = strtolower($file->getClientOriginalExtension());
+                $imageName = md5(microtime()) . '.' . $ext;
+                $uploadPath = public_path('uploads/admins');
+                if (!$file->move($uploadPath, $imageName)) {
+                    return redirect()->back()->with('error', 'file not upload');
+                }
+                $data['image'] = $imageName;
+
+
+            }
+
+            
             if (AdminUser::create($data)) {
                 echo "success";
             }
