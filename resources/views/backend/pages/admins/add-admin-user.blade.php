@@ -56,7 +56,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="password">password: <a
+                                            <label for="password">Password: <a
                                                     style="color: red;">{{$errors->first('password')}}</a></label>
                                             <input type="password" name="password" class="form-control form-control-sm"
                                                    id="password" value="{{old('password')}}">

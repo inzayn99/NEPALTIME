@@ -33,7 +33,7 @@ class AdminUserController extends BackendController
             $data['email'] = $request->email;
             $data['password'] = bcrypt($request->password);
 
-            if (AdminUser::created($data)) {
+            if (AdminUser::create($data)) {
                 echo "success";
             }
         }
