@@ -70,8 +70,9 @@
                                                          alt="">
                                                 </td>
                                                 <td>
-                                                    <a href="">Edit</a>
-                                                    <a href="">Delete</a>
+                                                    <a href="" class="btn-sm btn-primary"><i class="fa fa-edit">
+                                                        </i></a>
+                                                    <a href="" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
 
 
