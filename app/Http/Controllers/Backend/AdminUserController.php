@@ -9,6 +9,9 @@ class AdminUserController extends BackendController
 {
     public function index()
     {
+
+        $userData = AdminUser::orderBy('id', 'desc')->get();
+        $this->data('usersData', $userData);
         return view($this->pagePath . '.admins.show-admin-users', $this->data);
     }
 

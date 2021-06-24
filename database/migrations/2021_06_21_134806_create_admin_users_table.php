@@ -20,7 +20,7 @@ class CreateAdminUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('status')->default(0);
-            $table->enum('admin_type', ['super-admin', 'admin'])->default('admin');
+            $table->enum('admin_type', ['admin', 'super-admin'])->default('admin');
             $table->string('image')->nullable();
 
             $table->timestamps();
