@@ -13,7 +13,9 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Show User <a href="{{route('add-admin-user')}}" class="btn btn-success">Add new</a></h2>
+                            <h2><i class="fa fa-eye"></i>Show User <a href="{{route('add-admin-user')}}"
+                                                                      class="btn-sm btn-success"><i class="fa fa-plus"></i>
+                                </a></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -54,16 +56,34 @@
                                                 <td>{{$users->name}}</td>
                                                 <td>{{$users->username}}</td>
                                                 <td>{{$users->email}}</td>
-                                                <td>{{$users->admin_type}}</td>
                                                 <td>
+
+                                                    @if($users->admin_type=='super-admin')
+
+
+                                                        <button class="btn-sm btn-success" title="Super Admin"><i class="fa fa-users"></i></button>
+
+                                                    @else
+                                                        <button class="btn-sm btn-info" title="Admin"><i class="fa fa-user"></i></button>
+
+                                                    @endif
+
+
+
+                                                </td>
+                                                <td>
+                                                    <form action="{{route('update-admin-status')}}" method="post">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="criteria" value="{{$users->id}}">
                                                     @if($users->status==1)
-                                                        <button class="btn-xs btn-primary"><i class="fa fa-check"></i>
+                                                        <button name="active" class="btn-xs btn-primary"><i class="fa fa-check"></i>
                                                         </button>
 
                                                     @else
-                                                        <button class="btn-xs btn-warning"><i class="fa fa-times"></i>
+                                                        <button name="inactive" class="btn-xs btn-warning"><i class="fa fa-times"></i>
                                                         </button>
                                                     @endif
+                                                    </form>
                                                 </td>
                                                 <td>
                                                     <img src="{{url('uploads/admins/'.$users->image)}}" width="30"

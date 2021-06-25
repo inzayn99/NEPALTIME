@@ -20,7 +20,6 @@
     <!-- NProgress -->
     <script src="{{url('backend/vendors/nprogress/nprogress.js')}}"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="{{url('backend/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
     <script src="{{url('backend/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
     <script src="{{url('backend/vendors/google-code-prettify/src/prettify.js')}}"></script>
 

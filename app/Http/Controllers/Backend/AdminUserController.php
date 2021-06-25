@@ -57,4 +57,16 @@ class AdminUserController extends BackendController
             }
         }
     }
+
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+        if ($request->isMethod('post')) {
+            dd($request->all());
+        }
+    }
+
 }
