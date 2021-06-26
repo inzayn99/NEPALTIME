@@ -57,7 +57,7 @@ class AdminUserController extends BackendController
             }
         }
     }
-
+/************************Start Update Status*************************************/
     public function updateStatus(Request $request)
     {
         if ($request->isMethod('get')) {
@@ -80,6 +80,6 @@ class AdminUserController extends BackendController
             }
         }
     }
-
+/*****************End Update status***********************/
 
 }
