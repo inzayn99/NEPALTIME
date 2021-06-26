@@ -14,7 +14,8 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h2><i class="fa fa-eye"></i>Show User <a href="{{route('add-admin-user')}}"
-                                                                      class="btn-sm btn-success"><i class="fa fa-plus"></i>
+                                                                      class="btn-sm btn-success"><i
+                                        class="fa fa-plus"></i>
                                 </a></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -58,16 +59,19 @@
                                                 <td>{{$users->email}}</td>
                                                 <td>
 
-                                                    @if($users->admin_type=='super-admin')
+                                                        @if($users->admin_type=='super-admin')
 
 
-                                                        <button class="btn-sm btn-success" title="Super Admin"><i class="fa fa-users"></i></button>
+                                                            <button name="super_admin" class="btn-sm btn-success"
+                                                                    title="Super Admin"><i
+                                                                    class="fa fa-users"></i></button>
 
-                                                    @else
-                                                        <button class="btn-sm btn-info" title="Admin"><i class="fa fa-user"></i></button>
+                                                        @else
+                                                            <button name="admin" class="btn-sm btn-info" title="Admin">
+                                                                <i
+                                                                    class="fa fa-user"></i></button>
 
-                                                    @endif
-
+                                                        @endif
 
 
                                                 </td>
@@ -75,14 +79,16 @@
                                                     <form action="{{route('update-admin-status')}}" method="post">
                                                         {{csrf_field()}}
                                                         <input type="hidden" name="criteria" value="{{$users->id}}">
-                                                    @if($users->status==1)
-                                                        <button name="active" class="btn-xs btn-primary"><i class="fa fa-check"></i>
-                                                        </button>
+                                                        @if($users->status==1)
+                                                            <button name="active" class="btn-xs btn-primary"><i
+                                                                    class="fa fa-check"></i>
+                                                            </button>
 
-                                                    @else
-                                                        <button name="inactive" class="btn-xs btn-warning"><i class="fa fa-times"></i>
-                                                        </button>
-                                                    @endif
+                                                        @else
+                                                            <button name="inactive" class="btn-xs btn-warning"><i
+                                                                    class="fa fa-times"></i>
+                                                            </button>
+                                                        @endif
                                                     </form>
                                                 </td>
                                                 <td>

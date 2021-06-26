@@ -58,23 +58,22 @@ class AdminUserController extends BackendController
         }
     }
 
-
+    /**************************************Start Update Status************************/
     public function updateStatus(Request $request)
     {
         if ($request->isMethod('get')) {
             return redirect()->back();
         }
         if ($request->isMethod('post')) {
-            $id = $request->criteria;
-            $findUser = AdminUser::findOrFail($id);
-
+            $criteria = $request->criteria;
+            $findUser = AdminUser::findOrFail($criteria);
             if (isset($_POST['active'])) {
                 $findUser->status = 0;
-                $message = "Status Updated to Inactive";
+                $message = "Status was  Inactive";
             }
             if (isset($_POST['inactive'])) {
                 $findUser->status = 1;
-                $message = "Status Updated to Active";
+                $message = "Status was  Active";
             }
             if ($findUser->update()) {
                 return redirect()->back()->with('success', $message);
@@ -83,4 +82,6 @@ class AdminUserController extends BackendController
         }
     }
 
+
+    /**************************************End Update Status*******************************/
 }
