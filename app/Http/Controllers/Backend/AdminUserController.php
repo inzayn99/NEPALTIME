@@ -84,4 +84,31 @@ class AdminUserController extends BackendController
 
 
     /**************************************End Update Status*******************************/
+<<<<<<< HEAD
+=======
+    public function updateAdminType(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+        if ($request->isMethod('post')) {
+            $criteria = $request->criteria;
+            $findUser = AdminUser::findOrFail($criteria);
+
+            if (isset($_POST['super_admin'])) {
+                $findUser->admin_type = 'admin';
+                $message = "Admin Type wa changed";
+            }
+            if (isset($_POST['admin'])) {
+                $findUser->admin_type = 'super_admin';
+                $message = "Admin Type wa changed";
+            }
+            if ($findUser->update()) {
+                return redirect()->back()->with('success', $message);
+
+            }
+        }
+    }
+    /**************************end*/
+>>>>>>> c526ff11839ba91e683630195d885895df038949
 }
