@@ -58,18 +58,23 @@
                                                 <td>{{$users->username}}</td>
                                                 <td>{{$users->email}}</td>
                                                 <td>
-
+                                                    <form action="{{route('update-admin-type')}}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="criteria" value="{{$users->id}}">
                                                     @if($users->admin_type=='super-admin')
+
 
                                                     <button name="super_admin" class="btn-sm btn-success"
                                                             title="Super Admin"><i
                                                             class="fa fa-users"></i></button>
 
                                                     @else
+
                                                         <button name="admin" class="btn-sm btn-info" title="Admin">
                                                             <i class="fa fa-user"></i></button>
 
                                                     @endif
+                                                    </form>
 
 
                                                 </td>
