@@ -101,7 +101,7 @@
                                                 <td>
                                                     <a href="" class="btn-sm btn-primary"><i class="fa fa-edit">
                                                         </i></a>
-                                                    <a href="" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{route('delete-admin-user').'/'.$users->id}}" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
 
 

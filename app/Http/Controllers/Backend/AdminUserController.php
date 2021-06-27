@@ -57,7 +57,8 @@ class AdminUserController extends BackendController
             }
         }
     }
-/************************Start Update Status*************************************/
+
+    /************************Start Update Status*************************************/
     public function updateStatus(Request $request)
     {
         if ($request->isMethod('get')) {
@@ -80,7 +81,7 @@ class AdminUserController extends BackendController
             }
         }
     }
-/*****************End Update status***********************/
+    /*****************End Update status***********************/
 
     /**************UpdateAdminType***********************/
     public function updateAdminType(Request $request)
@@ -89,8 +90,8 @@ class AdminUserController extends BackendController
             return redirect()->back();
         }
         if ($request->isMethod('post')) {
-            $id = $request->criteria;
-            $findUser = AdminUser::findOrFail($id);
+            $criteria = $request->criteria;
+            $findUser = AdminUser::findOrFail($criteria);
 
             if (isset($_POST['super-admin'])) {
                 $findUser->admin_type = 'admin';
@@ -109,6 +110,30 @@ class AdminUserController extends BackendController
     /*****************End Admin Types***********************/
 
 
+    /***********Delete and Images************************/
+    function deleteFile($id)
+    {
+        $findData = AdminUser::findOrFail($id);
+       $fileName = $findData->image;
+        $filePath = public_path('uploads/admins/' . $fileName);
 
+        if (file_exists($filePath) && is_file($filePath)) {
+            unlink($filePath);
+            return true;
+        }else{
 
+            return true;
+        }
+
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->criteria;
+
+         if ($this->deleteFile($id) && AdminUser::findOrFail($id)->delete()){
+             return redirect()->back()->with('success','Data was deleted');
+         }
+    }
+/***************Delete Data and Images**************/
 }
