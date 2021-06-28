@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\AdminUser\AdminUser;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminUserController extends BackendController
 {
@@ -107,33 +108,88 @@ class AdminUserController extends BackendController
         }
 
     }
+
     /*****************End Admin Types***********************/
-
-
-    /***********Delete and Images************************/
-    function deleteFile($id)
-    {
-        $findData = AdminUser::findOrFail($id);
-       $fileName = $findData->image;
-        $filePath = public_path('uploads/admins/' . $fileName);
-
-        if (file_exists($filePath) && is_file($filePath)) {
-            unlink($filePath);
-            return true;
-        }else{
-
-            return true;
-        }
-
-    }
 
     public function delete(Request $request)
     {
         $id = $request->criteria;
 
-         if ($this->deleteFile($id) && AdminUser::findOrFail($id)->delete()){
-             return redirect()->back()->with('success','Data was deleted');
-         }
+        if ($this->deleteFile($id) && AdminUser::findOrFail($id)->delete()) {
+            return redirect()->back()->with('success', 'Data was deleted');
+        }
     }
-/***************Delete Data and Images**************/
+
+    /***********Startn Delete and Images************************/
+    function deleteFile($id)
+    {
+        $findData = AdminUser::findOrFail($id);
+        $fileName = $findData->image;
+        $filePath = public_path('uploads/admins/' . $fileName);
+
+        if (file_exists($filePath) && is_file($filePath)) {
+            unlink($filePath);
+            return true;
+        } else {
+
+            return true;
+        }
+
+    }
+    /***************End Delete Data and Images**************/
+
+    /**********Start Edit**********/
+    public function edit(Request $request)
+    {
+        $id = $request->criteria;
+        $adminData = AdminUser::findOrFail($id);
+        $this->data('adminData', $adminData);
+        return view($this->pagePath . '.admins.edit-admin', $this->data);
+    }
+
+    public function editAction(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+        if ($request->isMethod('post')) {
+            $id = $request->criteria;
+
+            $this->validate($request, [
+                'name' => 'required|min:3|max:100',
+                'username' => 'required|min:3|max:20|', [
+                    Rule::unique('admin_users', 'username')->ignore($id)
+                ],
+                'email' => 'required|email|', [
+                    Rule::unique('admin_users', 'email')->ignore($id)
+                ],
+                'image' => 'mimes:jpg,jpeg,gif,png'
+            ]);
+
+            $data['name'] = $request->name;
+            $data['username'] = $request->username;
+            $data['email'] = $request->email;
+            $data['password'] = bcrypt($request->password);
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $ext = strtolower($file->getClientOriginalExtension());
+                $imageName = md5(microtime()) . '.' . $ext;
+                $uploadPath = public_path('uploads/admins');
+                if ($this->deleteFile($id) && $file->move($uploadPath, $imageName)) {
+                    $data['image'] = $imageName;
+                }
+
+
+            }
+
+
+            if (AdminUser::findOrFail($id)->update($data)) {
+                return redirect()->route('admin-users')->with('success', 'Data was successfully Updated');
+            } else {
+                return redirect()->back()->with('error', 'Data was  not updated');
+            }
+
+        }
+    }
 }

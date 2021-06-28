@@ -18,6 +18,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
         Route::any('update-admin-type', 'AdminUserController@updateAdminType')->name('update-admin-type');
         Route::any('delete-admin-user/{criteria?}', 'AdminUserController@delete')->name('delete-admin-user');
 
+        Route::any('edit-admin-user/{criteria?}', 'AdminUserController@edit')->name('edit-admin-user');
+        Route::any('edit-admin-user-action', 'AdminUserController@editAction')->name('edit-admin-user-action');
+
 
     });
 
