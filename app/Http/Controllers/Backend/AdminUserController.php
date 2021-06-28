@@ -8,12 +8,23 @@ use Illuminate\Validation\Rule;
 
 class AdminUserController extends BackendController
 {
-    public function index()
-    {
+    public function index(Request $request)
+    {/*************Searching Admin Users*/
+        if (!empty($request->search_admin_users)) {
+            $criteria = $request->search_admin_users;
+            $userData=AdminUser::where('name','LIKE','%'.$criteria.'%')
+                ->orwhere('username','LIKE','%'.$criteria.'%')
+            ->orwhere('email','LIKE','%'.$criteria.'%')->get();
+            $this->data('usersData', $userData);
+            return view($this->pagePath . '.admins.show-admin-users', $this->data);
+        } else {
 
-        $userData = AdminUser::orderBy('id', 'desc')->get();
-        $this->data('usersData', $userData);
-        return view($this->pagePath . '.admins.show-admin-users', $this->data);
+            $userData = AdminUser::orderBy('id', 'desc')->get();
+            $this->data('usersData', $userData);
+            return view($this->pagePath . '.admins.show-admin-users', $this->data);
+        }
+/**************End Search Admin Users*/
+
     }
 
     public function add(Request $request)
@@ -192,4 +203,5 @@ class AdminUserController extends BackendController
 
         }
     }
+    /*********End Edit***************/
 }

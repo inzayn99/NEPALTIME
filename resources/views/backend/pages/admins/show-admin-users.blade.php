@@ -35,12 +35,29 @@
                         </div>
                         <div class="x_content">
                             <div class="row">
+                                {{---------------start search Button------}}
+                                <div class="col-md-12">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="colo-md-10" style="padding-right: 0;">
+                                                <input type="text" name="search_admin_users" class="form-control">
+                                            </div>
+                                            <div class="colo-md-2">
+                                                <button class="btn btn-primary">Search</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+
+                                </div>
+
                                 <div class="col-md-12">
                                     @include('backend.layouts.message')
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th>S.n</th>
+                                            <th>S.N</th>
                                             <th>Name</th>
                                             <th>Username</th>
                                             <th>Email</th>
@@ -99,7 +116,8 @@
                                                          alt="">
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('edit-admin-user').'/'.$users->id}}" class="btn-sm btn-primary"><i class="fa fa-edit">
+                                                    <a href="{{route('edit-admin-user').'/'.$users->id}}"
+                                                       class="btn-sm btn-primary"><i class="fa fa-edit">
                                                         </i></a>
                                                     <a href="{{route('delete-admin-user').'/'.$users->id}}"
                                                        class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
