@@ -9,12 +9,13 @@ use Illuminate\Validation\Rule;
 class AdminUserController extends BackendController
 {
     public function index(Request $request)
-    {/*************Searching Admin Users*/
+    {
+        /*************Searching Admin Users*/
         if (!empty($request->search_admin_users)) {
             $criteria = $request->search_admin_users;
-            $userData=AdminUser::where('name','LIKE','%'.$criteria.'%')
-                ->orwhere('username','LIKE','%'.$criteria.'%')
-            ->orwhere('email','LIKE','%'.$criteria.'%')->get();
+            $userData = AdminUser::where('name', 'LIKE', '%' . $criteria . '%')
+                ->orwhere('username', 'LIKE', '%' . $criteria . '%')
+                ->orwhere('email', 'LIKE', '%' . $criteria . '%')->get();
             $this->data('usersData', $userData);
             return view($this->pagePath . '.admins.show-admin-users', $this->data);
         } else {
@@ -23,7 +24,7 @@ class AdminUserController extends BackendController
             $this->data('usersData', $userData);
             return view($this->pagePath . '.admins.show-admin-users', $this->data);
         }
-/**************End Search Admin Users*/
+        /**************End Search Admin Users*/
 
     }
 
@@ -204,4 +205,17 @@ class AdminUserController extends BackendController
         }
     }
     /*********End Edit***************/
+
+    /************Login***************/
+    public function login(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return view($this->backendPath . 'admin-login.index', $this->data);
+
+        }
+        if ($request->isMethod('post')) {
+
+        }
+    }
+
 }

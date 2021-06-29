@@ -6,6 +6,11 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 });
 
+Route::group(['namespace' => 'Backend'], function () {
+    Route::any('admin-login', 'AdminUserController@login')->name('admin-login');
+
+});
+
 
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::any('/', 'DashboardController@index')->name('admin');
