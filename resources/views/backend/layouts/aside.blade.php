@@ -11,11 +11,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
-                    <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                    <img src="{{url('uploads/admins/'.Auth::guard('admin')->user()->image)}}" alt="..." class="img-circle profile_img">
                 </div>
                 <div class="profile_info">
                     <span>Welcome,</span>
-                    <h2>John Doe</h2>
+                    <h2>{{Auth::guard('admin')->user()->username}}</h2>
                 </div>
             </div>
             <!-- /menu profile quick info -->

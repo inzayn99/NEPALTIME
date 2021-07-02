@@ -19,7 +19,8 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Login To Dashboard</h1>
-            <form action="" method="post">
+            @include('backend.layouts.message')
+            <form action="{{route('admin-login')}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="username">Username</label>

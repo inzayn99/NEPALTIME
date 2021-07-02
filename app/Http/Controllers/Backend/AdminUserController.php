@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\AdminUser\AdminUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class AdminUserController extends BackendController
@@ -215,6 +216,17 @@ class AdminUserController extends BackendController
         }
         if ($request->isMethod('post')) {
 
+
+            $username = $request->username;
+            $password = $request->password;
+
+            if (Auth::guard('admin')->attempt(['username' => $username, 'password' => $password])) {
+                return redirect()->intended(route('admin'));
+
+            } else {
+
+                return redirect()->back()->with('error', 'Username & password not match');
+            }
         }
     }
 
