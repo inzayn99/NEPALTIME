@@ -1,4 +1,4 @@
-<h1>Users</h1>
+<h1> Welcome to Users page </h1>
 
 
 <a href="{{route('logout')}}">logout</a>
