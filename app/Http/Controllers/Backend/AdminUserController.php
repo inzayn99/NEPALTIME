@@ -230,4 +230,10 @@ class AdminUserController extends BackendController
         }
     }
 
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->intended('admin-login');
+    }
 }

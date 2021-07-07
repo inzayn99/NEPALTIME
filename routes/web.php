@@ -4,6 +4,17 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::any('/', 'ApplicationController@index')->name('index');
     Route::any('/contact', 'ApplicationController@contact')->name('contact');
 
+    Route::any('login', 'ApplicationController@login')->name('login');
+
+
+   /*Login And logout*/
+    Route::group(['prefix' => 'users','middleware'=>'auth:web'], function () {
+        Route::any('/', 'ApplicationController@user')->name('users');
+        Route::any('/logout', 'ApplicationController@logout')->name('logout');
+
+
+    });
+/*End Login And Logout*/
 });
 
 Route::group(['namespace' => 'Backend'], function () {
@@ -12,7 +23,7 @@ Route::group(['namespace' => 'Backend'], function () {
 });
 
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::any('/', 'DashboardController@index')->name('admin');
 
 
@@ -29,5 +40,5 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
 
     });
 
-
+    Route::any('admin-logout', "AdminUserController@logout")->name('admin-logout');
 });
