@@ -67,7 +67,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <a class="navbar-brand" href="#"
-                                ><img src="{{url('frontend/assets/images/logo.svg')}}" alt=""
+                                ><img src="{{url('frontend/assets/images/logo.png')}}" alt=""
                                     /></a>
                             </div>
                             <div>

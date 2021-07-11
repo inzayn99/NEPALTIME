@@ -1,16 +1,4 @@
-/*------------------------------------------------------------------
- * Theme Name: iofrm - form templates
- * Theme URI: http://www.brandio.io/envato/iofrm
- * Author: Brandio
- * Author URI: http://www.brandio.io/
- * Description: A Bootstrap Responsive HTML5 Template
- * Version: 1.0
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * Bootstrap v4.1 (http://getbootstrap.com)
- * Copyright 2019 Brandio.
- -------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[Table of contents]
+
 
 1. General Styles.
 2. Responsive Styles.
@@ -168,6 +156,8 @@ html, body {
 .img-holder .info-holder {
     position: relative;
     top: 50%;
+    margin-top: 85px;
+    margin-right: 300px;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -245,7 +235,7 @@ html, body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../images/img1.jpg");
+    background-image: url("../img/background.svg");
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -374,49 +364,6 @@ html, body {
     margin-bottom: 10px;
 }
 
-.form-content .page-links {
-    margin-bottom: 34px;
-}
-
-.form-content .page-links a {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 300;
-    font-size: 15px;
-    margin-right: 20px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.form-content .page-links a:last-child {
-    margin-right: 0;
-}
-
-.form-content .page-links a:after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 2px;
-    left: 0;
-    bottom: -10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.form-content .page-links a.active {
-    font-weight: 700;
-}
-
-.form-content .page-links a.active:after {
-    background-color: #fff;
-}
-
-.form-content .page-links a:hover:after, .form-content .page-links a:focus:after {
-    background-color: #fff;
-}
 
 .form-content input, .form-content .dropdown-toggle.btn-default {
     width: 100%;
@@ -770,51 +717,10 @@ html, body {
     font-size: 12px;
     font-weight: 700;
     color: #fff;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
-.form-content .other-links a:last-child {
-    margin-right: 0;
-}
 
-.form-content .other-links a i {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: #000;
-    color: #fff;
-    border-radius: 25px;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 15px;
-    margin: 0 5px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.form-content .other-links a i[class*="fa-twitter"] {
-    background-color: #00aced;
-}
-
-.form-content .other-links a i[class*="fa-facebook"] {
-    background-color: #3b5998;
-}
-
-.form-content .other-links a i[class*="fa-youtube"] {
-    background-color: #bb0000;
-}
-
-.form-content .other-links a i[class*="fa-google"] {
-    background-color: #dd4b39;
-}
-
-.form-content .other-links a i[class*="fa-linkedin"] {
-    background-color: #007bb6;
-}
-
-.form-content .other-links a i[class*="fa-instagram"] {
-    background-color: #517fa4;
-}
 
 .form-content .other-links a i:hover, .form-content .other-links a i:focus {
     opacity: 0.8;
@@ -1731,7 +1637,7 @@ input.sm-content {
     }
 
     .form-body.without-side .website-logo .logo {
-        background-image: url("../img/logo.png");
+        background-image: url("../img/NEPALTIME.png");
     }
 
     .form-body.without-side .form-holder .form-content {
