@@ -55,7 +55,7 @@
                                     <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Login</a>
+                                    <a href="{{route('login')}}" class="nav-link">Login</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">Sign in</a>
