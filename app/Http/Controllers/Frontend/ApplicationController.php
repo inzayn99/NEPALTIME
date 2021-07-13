@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,7 @@ class ApplicationController extends FrontendController
     public function index()
     {
 
-
+        $this->data('categoryData',Category::all());
         $this->data('title', $this->makeTitle('home'));
         return view($this->pagePath . '.Home.home', $this->data);
     }
@@ -46,8 +47,10 @@ class ApplicationController extends FrontendController
     {
         return view($this->frontendPath . '.users.index', $this->data);
     }
-public function logout(){
+
+    public function logout()
+    {
         Auth::guard('web')->logout();
         return redirect()->intended(route('login'));
-}
+    }
 }
