@@ -1,4 +1,13 @@
-<h1> Welcome to Users page </h1>
+@extends('frontend.master.master')
+@section('content')
+    <section>
+        <div class="container">
+
+            <h1>welcome {{Auth::guard('web')->user()->username}}</h1>
+
+        </div>
 
 
-<a href="{{route('logout')}}">logout</a>
+    </section>
+    <!---------------------------end partial ---------------------------------->
+@endsection

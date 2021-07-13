@@ -54,9 +54,14 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
                                 </li>
+
                                 <li class="nav-item">
+                                    @if(Auth::guard('web')->user())
+                                        <a href="{{route('logout')}}" class="nav-link">logout</a>
+                                    @else
                                     <a href="{{route('login')}}" class="nav-link">Login</a>
-                                </li>
+                                </li>@endif
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">Sign in</a>
                                 </li>
