@@ -12,7 +12,7 @@ class ApplicationController extends FrontendController
     public function index()
     {
 
-        $this->data('categoryData',Category::all());
+        $this->data('categoryData', Category::all());
         $this->data('title', $this->makeTitle('home'));
         return view($this->pagePath . '.Home.home', $this->data);
     }
@@ -21,6 +21,7 @@ class ApplicationController extends FrontendController
     {
         return view($this->pagePath . '.contact.contact', $this->data);
     }
+
 
     public function login(Request $request)
     {

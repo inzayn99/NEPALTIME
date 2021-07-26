@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="zxx">
   <head>
     <!-- Required meta tags -->
@@ -92,7 +93,7 @@
                           <a class="nav-link" href="../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="./magazine.html">MAGAZINE</a>
+                          <a class="nav-link" href="magazine.blade.php">MAGAZINE</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="./business.html">Business</a>
