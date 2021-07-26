@@ -29,7 +29,7 @@
                         <div class="x_content">
                             <div class="col-md-12">
                                 @include('backend.layouts.message')
-                                <form action="{{route('add-category')}}" method="post" enctype="multipart/form-data">
+                                <form action="" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="title">Category Name: <a href="" style="color:red;">{{$errors->first('cat_name')}}</a></label>

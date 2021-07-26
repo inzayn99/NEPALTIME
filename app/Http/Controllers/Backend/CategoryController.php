@@ -14,8 +14,16 @@ class CategoryController extends BackendController
         return view($this->pagePath . '.category.show-category', $this->data);
     }
 
+
+    function slugGenerator($data)
+    {
+        return str_replace(' ', '-', trim($data));
+    }
+
+
     public function add(Request $request)
     {
+
         if ($request->isMethod('get')) {
             return view($this->pagePath . '.category.add-category', $this->data);
 
