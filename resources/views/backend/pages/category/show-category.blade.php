@@ -43,7 +43,7 @@
                                         <thead>
                                         <tr>
                                             <th>S.N</th>
-                                            <th>Cate_Name</th>
+                                            <th>Cat_Name</th>
                                             <th>Status</th>
                                             <td>Posted By</td>
                                             <td>Created At</td>
@@ -54,7 +54,7 @@
                                         @foreach($categoryData as $key=>$category)
                                             <tr>
                                                 <td>{{++$key}}</td>
-                                                <td>{{$category->cate_name}}</td>
+                                                <td>{{$category->cat_name}}</td>
                                                 {{--                                                <td>{{$category->username}}</td>--}}
                                                 {{--                                                <td>{{$users->email}}</td>--}}
 

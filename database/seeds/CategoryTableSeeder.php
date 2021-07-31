@@ -24,10 +24,7 @@ class CategoryTableSeeder extends Seeder
             ['cate_name' => 'Media', 'slug' => 'Media', 'posted_by' => 1],
             ['cate_name' => 'Administration', 'slug' => 'Administration', 'posted_by' => 1],
             ['cate_name' => 'Sports', 'slug' => 'Sports', 'posted_by' => 1],
-            ['cate_name' => 'Game', 'slug' => 'Game', 'posted_by' => 1],
-            ['cate_name' => 'Art', 'slug' => 'Art', 'posted_by' => 1],
-            ['cate_name' => 'Kids', 'slug' => 'Kids', 'posted_by' => 1],
-
+            ['cate_name' => 'Game', 'slug' => 'Game', 'posted_by' => 1]
 
         ];
 

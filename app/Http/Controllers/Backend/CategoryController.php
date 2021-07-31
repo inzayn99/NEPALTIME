@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends BackendController
 {
@@ -29,8 +30,22 @@ class CategoryController extends BackendController
 
         }
         if ($request->isMethod('post')) {
+            $catObj = new Category();
+            $catObj->cat_name = $request->cat_name;
+            $catObj->slug = $this->slugGenerator($request->slug);
+            $catObj->meta_keywords = $request->meta_keywords;
+            $catObj->meta_description = $request->meta_description;
+            $catObj->description = $request->description;
+            $catObj->posted_by = Auth::guard('admin')->user()->id;
+
+            if ($catObj->save()) {
+                return redirect()->route('category')->with('success', 'Data was inserted');
+            }
 
         }
+
+
     }
+
 
 }

@@ -98,7 +98,7 @@
                                 <h2>Category</h2>
                                 <ul class="vertical-menu">
                                     @foreach($categoryData as $category)
-                                        <li><a href="#">{{$category->cate_name}}</a>
+                                        <li><a href="#">{{$category->cat_name}}</a>
 
 
                                         </li>

@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for="meta_keywords">Meta Keywords:</label>
                                         <input type="text" name="meta_keywords" id="meta_keywords" data-role="tagsinput"
-                                               value="Technology,Health care,Finance,Internation,Politics">
+                                               value="Politics,International,Finance,Health care,Technology">
                                     </div>
 
                                     <div class="form-group">
