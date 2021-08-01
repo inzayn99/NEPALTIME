@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminUser\AdminUser;
 use App\Models\Category\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends BackendController
 {
+//    ------------------Category Data Inserting-----------------//
     public function index()
     {
         $this->data('categoryData', Category::orderBy('id', 'desc')->get());
@@ -50,6 +52,7 @@ class CategoryController extends BackendController
 
     }
 
+//    -------------Update Category Status------------------//
     public function updateStatus(Request $request)
     {
         if ($request->isMethod('get')) {
@@ -72,11 +75,49 @@ class CategoryController extends BackendController
         }
     }
 
-    public function delete(Request $request){
-        $id=$request->criteria;
+//-----------------Delete Category----------------------//
+    public function delete(Request $request)
+    {
+        $id = $request->criteria;
         if (Category::findOrFail($id)->delete()) {
             return redirect()->route("category")->with('success', "Data Deleted Successfully");
         }
     }
 
+
+//    ------------Edit category----------------------//
+
+    public function edit(Request $request)
+    {
+        $id = $request->criteria;
+        $categoryData = Category::findOrFail($id);
+        $this->data('categoryData', $categoryData);
+        return view($this->pagePath . '.category.edit-category', $this->data);
+
+    }
+
+    public function editAction(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+        if ($request->isMethod('post')) {
+            $id = $request->criteria;
+
+            $data['cat_name'] = $request->cat_name;
+            $data['slug'] = $request->slug;
+            $data['meta_keywords'] = $request->meta_keywords;
+            $data['meta_description'] = ($request->meta_keywords);
+            $data['description'] = ($request->meta_keywords);
+            $data['posted_by'] = Auth::guard('admin')->user()->id;
+
+            if (category::findOrFail($id)->update($data)) {
+                return redirect()->route('category')->with('success', 'Data was updated');
+            } else {
+                return redirect()->back()->with('error', 'Data was  not updated');
+            }
+
+        }
+
+    }
 }
