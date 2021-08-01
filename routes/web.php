@@ -47,7 +47,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'au
         Route::any('update-category-status', 'CategoryController@updateStatus')->name('update-category-status');
         Route::any('delete-category/{criteria?}', 'CategoryController@delete')->name('delete-category');
         Route::any('edit-category/{criteria?}', 'CategoryController@edit')->name('edit-category');
-        Route::any('edit-category-action', 'CategoryController@editAction')->name('edit-category-action');
+        Route::any('edit-category-action', 'CategoryController@editAction')->name('edit-categ ory-action');
 
 
 

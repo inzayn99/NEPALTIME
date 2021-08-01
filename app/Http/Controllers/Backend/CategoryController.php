@@ -40,6 +40,9 @@ class CategoryController extends BackendController
 
             if ($catObj->save()) {
                 return redirect()->route('category')->with('success', 'Data was inserted');
+            } else {
+                return redirect()->back()->with('error', 'Data cannot inserted ');
+
             }
 
         }
@@ -47,5 +50,33 @@ class CategoryController extends BackendController
 
     }
 
+    public function updateStatus(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            return redirect()->back();
+        }
+        if ($request->isMethod('post')) {
+            $id = $request->criteria;
+            $findUser = Category::findOrFail($id);
+            if (isset($_POST['active'])) {
+                $findUser->status = 0;
+                $message = "Status Updated to Inactive";
+            }
+            if (isset($_POST['inactive'])) {
+                $findUser->status = 1;
+                $message = "Status Updated to Active";
+            }
+            if ($findUser->update()) {
+                return redirect()->back()->with('success', $message);
+            }
+        }
+    }
+
+    public function delete(Request $request){
+        $id=$request->criteria;
+        if (Category::findOrFail($id)->delete()) {
+            return redirect()->route("category")->with('success', "Data Deleted Successfully");
+        }
+    }
 
 }
