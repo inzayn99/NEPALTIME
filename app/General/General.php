@@ -15,7 +15,7 @@ trait General
         return $this->data[$key] = $value;
     }
 
-    public function makeTitle($backendPart, $separator = "-", $frontendPart = null)
+    public function makeTitle($backendPart, $separator = " | ", $frontendPart = null)
     {
         if (!isset($frontendPart)) {
             $frontendPart = ucfirst(Config::get('title.company_name'));

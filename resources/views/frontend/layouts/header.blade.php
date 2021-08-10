@@ -99,10 +99,10 @@
                                             </button>
                                         </li>
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="{{url('frontend/index.html"')}}>Home</a>
+                                            <a class="nav-link" href="{{route('index')}}">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/magazine.blade.php')}}">MAGAZINE</a>
+                                            <a class="nav-link" href="{{url('frontend/pages/magazine.html')}}">MAGAZINE</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{url('frontend/pages/business.html')}}">Business</a>
