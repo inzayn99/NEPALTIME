@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-Login</title>
     <link rel="stylesheet" type="text/css" href="{{url('frontend/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/login/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/login/css/fontawesome-wholepage.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('frontend/login/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('frontend/login/css/login.css')}}">
 </head>

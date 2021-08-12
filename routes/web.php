@@ -3,6 +3,17 @@
 Route::group(['namespace' => 'Frontend'], function () {
     Route::any('/', 'ApplicationController@index')->name('index');
     Route::any('/contact', 'ApplicationController@contact')->name('contact');
+    Route::any('/magazine', 'ApplicationController@magazine')->name('magazine');
+    Route::any('/404', 'ApplicationController@404')->name('404');
+    Route::any('/aboutus', 'ApplicationController@aboutus')->name('aboutus');
+    Route::any('/bussiness', 'ApplicationController@bussiness')->name('bussiness');
+    Route::any('/advertise', 'ApplicationController@advertise')->name('advertise');
+    Route::any('/politics', 'ApplicationController@politics')->name('politics');
+    Route::any('/sports', 'ApplicationController@sports')->name('sports');
+    Route::any('/travel', 'ApplicationController@travel')->name('travel');
+    Route::any('/events', 'ApplicationController@events')->name('events');
+    Route::any('/art', 'ApplicationController@art')->name('art');
+
 
 
     Route::any('login', 'ApplicationController@login')->name('login');
@@ -49,12 +60,30 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'au
         Route::any('edit-category/{criteria?}', 'CategoryController@edit')->name('edit-category');
         Route::any('edit-category-action', 'CategoryController@editAction')->name('edit-category-action');
 
+    });
 
-
-
+    Route::group(['prefix' => 'Post'], function () {
+        Route::any('/', 'PostController@index')->name('post');
+        Route::any('/add-post', 'PostController@add')->name('add-post');
+        Route::any('update-post-status', 'PostController@updateStatus')->name('update-post-status');
+        Route::any('delete-post/{criteria?}', 'PostController@delete')->name('delete-post');
+        Route::any('edit-post/{criteria?}', 'PostController@edit')->name('edit-post');
+        Route::any('edit-post-action', 'PostController@editAction')->name('edit-post-action');
 
     });
 
-        Route::any('admin-logout', "AdminUserController@logout")->name('admin-logout');
+
+
+    Route::group(['prefix' => 'Videos'], function () {
+        Route::any('/', 'VideosController@index')->name('post');
+        Route::any('/add-videos', 'VideosController@add')->name('add-videos ');
+        Route::any('update-videos-status', 'VideosController@updateStatus')->name('update-videos-status');
+        Route::any('delete-videos/{criteria?}', 'VideosController@delete')->name('delete-videos');
+        Route::any('edit-videos/{criteria?}', 'VideosController@edit')->name('edit-videos');
+        Route::any('edit-videos-action', 'VideosController@editAction')->name('edit-videos-action');
+
+    });
+
+    Route::any('admin-logout', "AdminUserController@logout")->name('admin-logout');
 
 });

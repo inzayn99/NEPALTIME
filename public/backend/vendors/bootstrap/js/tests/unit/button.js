@@ -10,7 +10,7 @@ $(function () {
 
   QUnit.module('button', {
     beforeEach: function () {
-      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      // Run wholepage tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapButton = $.fn.button.noConflict()
     },
     afterEach: function () {

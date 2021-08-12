@@ -193,7 +193,7 @@
     },
 
     /**
-     * Removes all items
+     * Removes wholepage items
      */
     removeAll: function() {
       var self = this;
@@ -473,7 +473,7 @@
     },
 
     /**
-     * Removes all tagsinput behaviour and unregsiter all event handlers
+     * Removes wholepage tagsinput behaviour and unregsiter wholepage event handlers
      */
     destroy: function() {
       var self = this;

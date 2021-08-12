@@ -2,7 +2,7 @@
 //
 // 1. .carousel.pointer-event should ideally be pan-y (to allow for users to scroll vertically)
 //    even when their scroll action started on a carousel, but for compatibility (with Firefox)
-//    we're preventing all actions instead
+//    we're preventing wholepage actions instead
 // 2. The .carousel-item-left and .carousel-item-right is used to indicate where
 //    the active slide is heading.
 // 3. .active.carousel-item is the current slide.

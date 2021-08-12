@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login to User</title>
     <link rel="stylesheet" type="text/css" href="{{url('frontend/user/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url('frontend/user/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('frontend/user/css/fontawesome-wholepage.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('frontend/user/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url('frontend/user/css/user.css')}}">
 </head>

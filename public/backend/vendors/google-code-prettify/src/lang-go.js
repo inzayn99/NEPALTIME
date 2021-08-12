@@ -18,7 +18,7 @@
  * @fileoverview
  * Registers a language handler for the Go language..
  * <p>
- * Based on the lexical grammar at 
+ * Based on the lexical grammar at
  * http://golang.org/doc/go_spec.html#Lexical_elements
  * <p>
  * Go uses a minimal style for highlighting so the below does not distinguish
@@ -34,7 +34,7 @@
  * >> encouragement through familiarity, but even then I would ask to shy away
  * >> from technicolor starbursts.
  * >
- * > Like http://golang.org/pkg/go/scanner/ where comments are blue and all
+ * > Like http://golang.org/pkg/go/scanner/ where comments are blue and wholepage
  * > other content is black?  I can do that.
  * </pre>
  *

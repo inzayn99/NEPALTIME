@@ -52,7 +52,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "web" routes for the application.
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * These routes wholepage receive session state, CSRF protection, etc.
      *
      * @return void
      */

@@ -25,7 +25,7 @@ PR['registerLangHandler'](
         [
          // whitespace
          [PR['PR_PLAIN'],   /^[\t\n\r \xA0]+/, null, '\t\n\r \xA0'],
-         // all comments begin with '%'
+         // wholepage comments begin with '%'
          [PR['PR_COMMENT'], /^%[^\r\n]*/, null, '%']
         ],
         [

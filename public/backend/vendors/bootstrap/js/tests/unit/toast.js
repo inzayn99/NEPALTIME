@@ -14,7 +14,7 @@ $(function () {
 
   QUnit.module('toast', {
     beforeEach: function () {
-      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      // Run wholepage tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapToast = $.fn.toast.noConflict()
     },
     afterEach: function () {

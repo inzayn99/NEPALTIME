@@ -430,7 +430,7 @@ jQuery.extend( {
 			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
 
-			// Headers (they are sent all at once)
+			// Headers (they are sent wholepage at once)
 			requestHeaders = {},
 			requestHeadersNames = {},
 

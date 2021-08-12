@@ -32,8 +32,8 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     'Element “legend” not allowed as child of element “div” in this context.*',
     // Content → Reboot uses various date/time inputs as a visual example.
     // Documentation does not rely on them being usable.
-    'The “date” input type is not supported in all browsers.*',
-    'The “time” input type is not supported in all browsers.*',
+    'The “date” input type is not supported in wholepage browsers.*',
+    'The “time” input type is not supported in wholepage browsers.*',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.
     'The “main” role is unnecessary for element “main”.',

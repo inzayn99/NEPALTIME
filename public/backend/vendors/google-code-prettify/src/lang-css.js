@@ -70,9 +70,9 @@
 
 // The current loop now looks like
 
-//    1. use js-modules/combinePrefixPatterns.js to 
-//       combine all regular expressions into one 
-//    2. use a single global regular expresion match to extract all tokens
+//    1. use js-modules/combinePrefixPatterns.js to
+//       combine wholepage regular expressions into one
+//    2. use a single global regular expresion match to extract wholepage tokens
 //    3. for each token try regular expressions in order until one matches it
 //       and classify it using the associated style
 

@@ -1,0 +1,57 @@
+@extends('frontend.master.master')
+
+@section('content')
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card" data-aos="fade-up">
+                        <div class="card-body">
+                            <div class="aboutus-wrapper">
+                                <h1 class="mt-5">
+                                    About Us
+                                </h1>
+                                <p class="font-weight-600 fs-15">
+                                    He has led a remarkable campaign, defying the traditional
+                                    mainstream parties courtesy of his En Marche! movement.
+                                    For many, however, the campaign has become less about
+                                    backing Macron and instead about voting against Le Pen,
+                                    the National Front candidate.
+                                </p>
+                                <p class="font-weight-600 fs-15 mb-5 mt-4">
+                                    He has led a remarkable campaign, defying the traditional
+                                    mainstream parties courtesy of his En Marche! movement.
+                                    For many, however, the campaign has become less about
+                                    backing Macron and instead about voting against Le Pen,
+                                    the National Front candidate.
+                                </p>
+                                <img
+                                    src="{{url('frontend/assets/images/about/about.jpg')}}"
+                                    alt="banner"
+                                    class="img-fluid mb-5"
+                                />
+
+                                <p class="font-weight-600 fs-15 text-center">
+                                    He has led a remarkable campaign, defying the traditional
+                                    mainstream parties courtesy of his En Marche! movement.
+                                    For many, however, the campaign has become less about
+                                    backing Macron and instead about voting against Le Pen,
+                                    the National Front candidate.
+                                </p>
+                                <p class="font-weight-600 fs-15 mb-5 mt-4 text-center">
+                                    He has led a remarkable campaign, defying the traditional
+                                    mainstream parties courtesy of his En Marche! movement.
+                                    For many, however, the campaign has become less about
+                                    backing Macron and instead about voting against Le Pen,
+                                    the National Front candidate.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- container-scroller ends -->
+@endsection

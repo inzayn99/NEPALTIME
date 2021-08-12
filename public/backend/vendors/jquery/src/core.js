@@ -60,7 +60,7 @@ jQuery.fn = jQuery.prototype = {
 			// Return just the one element from the set
 			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
 
-			// Return all the elements in a clean array
+			// Return wholepage the elements in a clean array
 			slice.call( this );
 	},
 
@@ -241,7 +241,7 @@ jQuery.extend( {
 		}
 
 		// Own properties are enumerated firstly, so to speed up,
-		// if last one is own, then all properties are own
+		// if last one is own, then wholepage properties are own
 		for ( key in obj ) {}
 
 		return key === undefined || hasOwn.call( obj, key );

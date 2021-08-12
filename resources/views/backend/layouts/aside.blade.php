@@ -11,7 +11,8 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
                 <div class="profile_pic">
-                    <img src="{{url('uploads/admins/'.Auth::guard('admin')->user()->image)}}" alt="..." class="img-circle profile_img">
+                    <img src="{{url('uploads/admins/'.Auth::guard('admin')->user()->image)}}" alt="..."
+                         class="img-circle profile_img">
                 </div>
                 <div class="profile_info">
                     <span>Welcome,</span>
@@ -38,8 +39,9 @@
                             </ul>
                         </li>
 
+
                         {{-----------------------start Category---------------}}
-<li><a><i class="fa fa-folder-open"></i> Category <span class="fa fa-chevron-down"></span></a>
+                        <li><a><i class="fa fa-folder-open"></i> Category <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="{{route('add-category')}}">Add Category</a></li>
                                 <li><a href="{{route('category')}}">Show Category</a></li>
@@ -48,9 +50,18 @@
                         </li>
 
 
+                        <li><a><i class="fa fa-newspaper-o"></i>Post Manage<span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="{{route('add-post')}}">Add Post</a></li>
+                                <li><a href="{{route('post')}}">Edit Post</a></li>
+                                <li><a href="{{route('post')}}">Show Post</a></li>
+                                <li><a href="{{route('post')}}">404 Error</a></li>
+
+                            </ul>
+                        </li>
+
 
                 </div>
-
 
 
             </div>

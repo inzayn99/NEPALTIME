@@ -35,13 +35,13 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <ul class="navbar-top-left-menu">
                                 <li class="nav-item">
-                                    <a href="{{url('frontend/pages/index-inner.html')}}" class="nav-link">Advertise</a>
+                                    <a href="{{url('advertise')}}" class="nav-link">Advertise</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('frontend/pages/aboutus.html')}}" class="nav-link">About</a>
+                                    <a href="{{url('aboutus')}}" class="nav-link">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Events</a>
+                                    <a href="{{url('events')}}" class="nav-link">Events</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">Write for Us</a>
@@ -102,25 +102,25 @@
                                             <a class="nav-link" href="{{route('index')}}">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/magazine.html')}}">MAGAZINE</a>
+                                            <a class="nav-link" href="{{url('magazine')}}">MAGAZINE</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/business.html')}}">Business</a>
+                                            <a class="nav-link" href="{{url('bussiness')}}">Business</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/sports.html')}}">Sports</a>
+                                            <a class="nav-link" href="{{url('sports')}}">Sports</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/art.html')}}">Art</a>
+                                            <a class="nav-link" href="{{url('art')}}">Art</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/politics.html')}}">POLITICS</a>
+                                            <a class="nav-link" href="{{url('politics')}}">POLITICS</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/travel.html')}}">Travel</a>
+                                            <a class="nav-link" href="{{url('travel')}}">Travel</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('frontend/pages/contactus.html')}}">Contact</a>
+                                            <a class="nav-link" href="{{url('contact')}}">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -154,10 +154,12 @@
                 <div class="d-lg-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <span class="badge badge-dark mr-3">Flash news</span>
-                        <p class="mb-0">
+                        <p class="mb-0 ">
                             Lorem Ipsum has been the industry's standard dummy text ever
                             since the 1500s.
                         </p>
+
+
                     </div>
                     <div class="d-flex">
                         <span class="mr-3 text-danger">Wed, March 4, 2020</span>

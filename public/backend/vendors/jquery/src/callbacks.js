@@ -69,7 +69,7 @@ jQuery.Callbacks = function( options ) {
 			// Enforce single-firing
 			locked = options.once;
 
-			// Execute callbacks for all pending executions,
+			// Execute callbacks for wholepage pending executions,
 			// respecting firingIndex overrides and runtime changes
 			fired = firing = true;
 			for ( ; queue.length; firingIndex = -1 ) {
@@ -166,7 +166,7 @@ jQuery.Callbacks = function( options ) {
 					list.length > 0;
 			},
 
-			// Remove all callbacks from the list
+			// Remove wholepage callbacks from the list
 			empty: function() {
 				if ( list ) {
 					list = [];
@@ -176,7 +176,7 @@ jQuery.Callbacks = function( options ) {
 
 			// Disable .fire and .add
 			// Abort any current/pending executions
-			// Clear all callbacks and values
+			// Clear wholepage callbacks and values
 			disable: function() {
 				locked = queue = [];
 				list = memory = "";
@@ -200,7 +200,7 @@ jQuery.Callbacks = function( options ) {
 				return !!locked;
 			},
 
-			// Call all callbacks with the given context and arguments
+			// Call wholepage callbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( !locked ) {
 					args = args || [];
@@ -213,7 +213,7 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Call all the callbacks with the given arguments
+			// Call wholepage the callbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;

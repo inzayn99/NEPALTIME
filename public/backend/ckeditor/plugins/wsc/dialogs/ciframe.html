@@ -45,7 +45,7 @@ function OnMessage (event) {
 }
 
 function listenPostMessage() {
-    if (window.addEventListener) { // all browsers except IE before version 9
+    if (window.addEventListener) { // wholepage browsers except IE before version 9
             window.addEventListener ("message", OnMessage, false);
     }else {
             if (window.attachEvent) { // IE before version 9

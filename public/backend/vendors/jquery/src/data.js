@@ -61,7 +61,7 @@ jQuery.extend( {
 		dataUser.remove( elem, name );
 	},
 
-	// TODO: Now that all calls to _data and _removeData have been replaced
+	// TODO: Now that wholepage calls to _data and _removeData have been replaced
 	// with direct calls to dataPriv methods, these can be deprecated.
 	_data: function( elem, name, data ) {
 		return dataPriv.access( elem, name, data );
@@ -78,7 +78,7 @@ jQuery.fn.extend( {
 			elem = this[ 0 ],
 			attrs = elem && elem.attributes;
 
-		// Gets all values
+		// Gets wholepage values
 		if ( key === undefined ) {
 			if ( this.length ) {
 				data = dataUser.get( elem );
@@ -163,7 +163,7 @@ jQuery.fn.extend( {
 
 				// For HTML5 data-* attribute interop, we have to
 				// store property names with dashes in a camelCase form.
-				// This might not apply to all properties...*
+				// This might not apply to wholepage properties...*
 				dataUser.set( this, camelKey, value );
 
 				// *... In the case of properties that might _actually_

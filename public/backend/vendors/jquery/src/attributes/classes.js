@@ -78,7 +78,7 @@ jQuery.fn.extend( {
 					j = 0;
 					while ( ( clazz = classes[ j++ ] ) ) {
 
-						// Remove *all* instances
+						// Remove *wholepage* instances
 						while ( cur.indexOf( " " + clazz + " " ) > -1 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
 						}

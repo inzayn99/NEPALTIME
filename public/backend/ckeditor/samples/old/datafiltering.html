@@ -11,7 +11,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	<link rel="stylesheet" href="sample.css">
 	<meta name="description" content="Try the latest sample of CKEditor 4 and learn more about customizing your WYSIWYG editor with endless possibilities.">
 	<script>
-		// Remove advanced tabs for all editors.
+		// Remove advanced tabs for wholepage editors.
 		CKEDITOR.config.removeDialogTabs = 'image:advanced;link:advanced;flash:advanced;creatediv:advanced;editdiv:advanced';
 	</script>
 </head>
@@ -481,7 +481,7 @@ CKEDITOR.replace( 'editor7', {
 
 			CKEDITOR.replace( 'editor7', {
 				allowedContent: {
-					// allow all content
+					// allow wholepage content
 					$1: {
 						elements: CKEDITOR.dtd,
 						attributes: true,

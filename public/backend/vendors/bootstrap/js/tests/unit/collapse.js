@@ -10,7 +10,7 @@ $(function () {
 
   QUnit.module('collapse', {
     beforeEach: function () {
-      // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
+      // Run wholepage tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
     },
     afterEach: function () {
@@ -184,7 +184,7 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should remove "collapsed" class from all triggers targeting the collapse when the collapse is shown', function (assert) {
+  QUnit.test('should remove "collapsed" class from wholepage triggers targeting the collapse when the collapse is shown', function (assert) {
     assert.expect(2)
     var done = assert.async()
 
@@ -202,7 +202,7 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden', function (assert) {
+  QUnit.test('should add "collapsed" class to wholepage triggers targeting the collapse when the collapse is hidden', function (assert) {
     assert.expect(2)
     var done = assert.async()
 
@@ -378,7 +378,7 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should set aria-expanded="true" on all triggers targeting the collapse when the collapse is shown', function (assert) {
+  QUnit.test('should set aria-expanded="true" on wholepage triggers targeting the collapse when the collapse is shown', function (assert) {
     assert.expect(2)
     var done = assert.async()
 
@@ -396,7 +396,7 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should set aria-expanded="false" on all triggers targeting the collapse when the collapse is hidden', function (assert) {
+  QUnit.test('should set aria-expanded="false" on wholepage triggers targeting the collapse when the collapse is hidden', function (assert) {
     assert.expect(2)
     var done = assert.async()
 
@@ -725,7 +725,7 @@ $(function () {
     $target.trigger($.Event('click'))
   })
 
-  QUnit.test('should add "collapsed" class to triggers only when all the targeted collapse are hidden', function (assert) {
+  QUnit.test('should add "collapsed" class to triggers only when wholepage the targeted collapse are hidden', function (assert) {
     assert.expect(9)
     var done = assert.async()
 
@@ -757,7 +757,7 @@ $(function () {
     $trigger3.trigger('click')
   })
 
-  QUnit.test('should set aria-expanded="true" to triggers targeting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
+  QUnit.test('should set aria-expanded="true" to triggers targeting shown collaspe and aria-expanded="false" only when wholepage the targeted collapses are shown', function (assert) {
     assert.expect(9)
     var done = assert.async()
 

@@ -21,7 +21,7 @@ define( [
  * custom selectors via Sizzle extensions
  * Leading combinators (e.g., $collection.find("> *"))
  * Reliable functionality on XML fragments
- * Requiring all parts of a selector to match elements under context
+ * Requiring wholepage parts of a selector to match elements under context
  *   (e.g., $div.find("div > *") now matches children of $div)
  * Matching against non-elements
  * Reliable sorting of disconnected nodes

@@ -236,8 +236,8 @@ var IN_GLOBAL_SCOPE = false;
     // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     // See the License for the specific language governing permissions and
     // limitations under the License.
-    
-    
+
+
     /**
      * @fileoverview
      * some functions for browser-side pretty printing of code contained in html.
@@ -276,17 +276,17 @@ var IN_GLOBAL_SCOPE = false;
      * </blockquote>
      * @requires console
      */
-    
+
     // JSLint declarations
     /*global console, document, navigator, setTimeout, window, define */
-    
+
     /**
      * Split {@code prettyPrint} into multiple timeouts so as not to interfere with
      * UI events.
      * If set to {@code false}, {@code prettyPrint()} is synchronous.
      */
     window['PR_SHOULD_USE_CONTINUATION'] = true;
-    
+
     /**
      * Pretty print a chunk of code.
      * @param {string} sourceCodeHtml The HTML to pretty print.
@@ -298,24 +298,24 @@ var IN_GLOBAL_SCOPE = false;
      */
     var prettyPrintOne;
     /**
-     * Find all the {@code <pre>} and {@code <code>} tags in the DOM with
+     * Find wholepage the {@code <pre>} and {@code <code>} tags in the DOM with
      * {@code class=prettyprint} and prettify them.
      *
      * @param {Function} opt_whenDone called when prettifying is done.
      * @param {HTMLElement|HTMLDocument} opt_root an element or document
-     *   containing all the elements to pretty print.
+     *   containing wholepage the elements to pretty print.
      *   Defaults to {@code document.body}.
      */
     var prettyPrint;
-    
-    
+
+
     (function () {
       var win = window;
       // Keyword lists for various languages.
       // We use things that coerce to strings to make them compact when minified
       // and to defeat aggressive optimizers that fold large string constants.
       var FLOW_CONTROL_KEYWORDS = ["break,continue,do,else,for,if,return,while"];
-      var C_KEYWORDS = [FLOW_CONTROL_KEYWORDS,"auto,case,char,const,default," + 
+      var C_KEYWORDS = [FLOW_CONTROL_KEYWORDS,"auto,case,char,const,default," +
           "double,enum,extern,float,goto,inline,int,long,register,short,signed," +
           "sizeof,static,struct,switch,typedef,union,unsigned,void,volatile"];
       var COMMON_KEYWORDS = [C_KEYWORDS,"catch,class,delete,false,import," +
@@ -335,7 +335,7 @@ var IN_GLOBAL_SCOPE = false;
           "lock,object,out,override,orderby,params,partial,readonly,ref,sbyte," +
           "sealed,stackalloc,string,select,uint,ulong,unchecked,unsafe,ushort," +
           "var,virtual,where"];
-      var COFFEE_KEYWORDS = "all,and,by,catch,class,else,extends,false,finally," +
+      var COFFEE_KEYWORDS = "wholepage,and,by,catch,class,else,extends,false,finally," +
           "for,if,in,is,isnt,loop,new,no,not,null,of,off,on,or,return,super,then," +
           "throw,true,try,unless,until,when,while,yes";
       var JSCRIPT_KEYWORDS = [COMMON_KEYWORDS,
@@ -361,7 +361,7 @@ var IN_GLOBAL_SCOPE = false;
           CPP_KEYWORDS, CSHARP_KEYWORDS, JSCRIPT_KEYWORDS, PERL_KEYWORDS,
           PYTHON_KEYWORDS, RUBY_KEYWORDS, SH_KEYWORDS];
       var C_TYPES = /^(DIR|FILE|vector|(de|priority_)?queue|list|stack|(const_)?iterator|(multi)?(set|map)|bitset|u?(int|float)\d*)\b/;
-    
+
       // token style names.  correspond to css classes
       /**
        * token style for a string literal
@@ -398,7 +398,7 @@ var IN_GLOBAL_SCOPE = false;
        * @const
        */
       var PR_PLAIN = 'pln';
-    
+
       /**
        * token style for an sgml tag.
        * @const
@@ -424,16 +424,16 @@ var IN_GLOBAL_SCOPE = false;
        * @const
        */
       var PR_ATTRIB_VALUE = 'atv';
-    
+
       /**
        * A class that indicates a section of markup that is not code, e.g. to allow
        * embedding of line numbers within code listings.
        * @const
        */
       var PR_NOCODE = 'nocode';
-    
-      
-      
+
+
+
       /**
        * A set of tokens that can precede a regular expression literal in
        * javascript
@@ -454,13 +454,13 @@ var IN_GLOBAL_SCOPE = false;
        * @const
        */
       var REGEXP_PRECEDER_PATTERN = '(?:^^\\.?|[+-]|[!=]=?=?|\\#|%=?|&&?=?|\\(|\\*=?|[+\\-]=|->|\\/=?|::?|<<?=?|>>?>?=?|,|;|\\?|@|\\[|~|{|\\^\\^?=?|\\|\\|?=?|break|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)\\s*';
-      
+
       // CAVEAT: this does not properly handle the case where a regular
       // expression immediately follows another since a regular expression may
       // have flags for case-sensitivity and the like.  Having regexp tokens
       // adjacent is not valid in any language I'm aware of, so I'm punting.
       // TODO: maybe style special characters inside a regexp as punctuation.
-    
+
       /**
        * Given a group of {@link RegExp}s, returns a {@code RegExp} that globally
        * matches the union of the sets of strings matched by the input RegExp.
@@ -471,7 +471,7 @@ var IN_GLOBAL_SCOPE = false;
        */
       function combinePrefixPatterns(regexs) {
         var capturedGroupIndex = 0;
-      
+
         var needToFoldCase = false;
         var ignoreCase = false;
         for (var i = 0, n = regexs.length; i < n; ++i) {
@@ -485,7 +485,7 @@ var IN_GLOBAL_SCOPE = false;
             break;
           }
         }
-      
+
         var escapeCharToCodeUnit = {
           'b': 8,
           't': 9,
@@ -494,7 +494,7 @@ var IN_GLOBAL_SCOPE = false;
           'f': 0xc,
           'r': 0xd
         };
-      
+
         function decodeEscape(charsetPart) {
           var cc0 = charsetPart.charCodeAt(0);
           if (cc0 !== 92 /* \\ */) {
@@ -512,7 +512,7 @@ var IN_GLOBAL_SCOPE = false;
             return charsetPart.charCodeAt(1);
           }
         }
-      
+
         function encodeEscape(charCode) {
           if (charCode < 0x20) {
             return (charCode < 0x10 ? '\\x0' : '\\x') + charCode.toString(16);
@@ -521,7 +521,7 @@ var IN_GLOBAL_SCOPE = false;
           return (ch === '\\' || ch === '-' || ch === ']' || ch === '^')
               ? "\\" + ch : ch;
         }
-      
+
         function caseFoldCharset(charSet) {
           var charsetParts = charSet.substring(1, charSet.length - 1).match(
               new RegExp(
@@ -535,10 +535,10 @@ var IN_GLOBAL_SCOPE = false;
                   'g'));
           var ranges = [];
           var inverse = charsetParts[0] === '^';
-      
+
           var out = ['['];
           if (inverse) { out.push('^'); }
-      
+
           for (var i = inverse ? 1 : 0, n = charsetParts.length; i < n; ++i) {
             var p = charsetParts[i];
             if (/\\[bdsw]/i.test(p)) {  // Don't muck with named groups.
@@ -567,7 +567,7 @@ var IN_GLOBAL_SCOPE = false;
               }
             }
           }
-      
+
           // [[1, 10], [3, 4], [8, 12], [14, 14], [16, 16], [17, 17]]
           // -> [[1, 12], [14, 14], [16, 17]]
           ranges.sort(function (a, b) { return (a[0] - b[0]) || (b[1]  - a[1]); });
@@ -581,7 +581,7 @@ var IN_GLOBAL_SCOPE = false;
               consolidatedRanges.push(lastRange = range);
             }
           }
-      
+
           for (var i = 0; i < consolidatedRanges.length; ++i) {
             var range = consolidatedRanges[i];
             out.push(encodeEscape(range[0]));
@@ -593,7 +593,7 @@ var IN_GLOBAL_SCOPE = false;
           out.push(']');
           return out.join('');
         }
-      
+
         function allowAnywhereFoldCaseAndRenumberGroups(regex) {
           // Split into character sets, escape sequences, punctuation strings
           // like ('(', '(?:', ')', '^'), and runs of characters that do not
@@ -612,12 +612,12 @@ var IN_GLOBAL_SCOPE = false;
                   + ')',
                   'g'));
           var n = parts.length;
-      
+
           // Maps captured group numbers to the number they will occupy in
           // the output or to -1 if that has not been determined, or to
           // undefined if they need not be capturing in the output.
           var capturedGroups = [];
-      
+
           // Walk over and identify back references to build the capturedGroups
           // mapping.
           for (var i = 0, groupIndex = 0; i < n; ++i) {
@@ -639,7 +639,7 @@ var IN_GLOBAL_SCOPE = false;
               }
             }
           }
-      
+
           // Renumber groups and reduce capturing groups to non-capturing groups
           // where possible.
           for (var i = 1; i < capturedGroups.length; ++i) {
@@ -661,13 +661,13 @@ var IN_GLOBAL_SCOPE = false;
               }
             }
           }
-      
+
           // Remove any prefix anchors so that the output will match anywhere.
           // ^^ really does mean an anchored match though.
           for (var i = 0; i < n; ++i) {
             if ('^' === parts[i] && '^' !== parts[i + 1]) { parts[i] = ''; }
           }
-      
+
           // Expand letters to groups to handle mixing of case-sensitive and
           // case-insensitive patterns if necessary.
           if (regex.ignoreCase && needToFoldCase) {
@@ -687,10 +687,10 @@ var IN_GLOBAL_SCOPE = false;
               }
             }
           }
-      
+
           return parts.join('');
         }
-      
+
         var rewritten = [];
         for (var i = 0, n = regexs.length; i < n; ++i) {
           var regex = regexs[i];
@@ -698,10 +698,10 @@ var IN_GLOBAL_SCOPE = false;
           rewritten.push(
               '(?:' + allowAnywhereFoldCaseAndRenumberGroups(regex) + ')');
         }
-      
+
         return new RegExp(rewritten.join('|'), ignoreCase ? 'gi' : 'g');
       }
-    
+
       /**
        * Split markup into a string of source code and an array mapping ranges in
        * that string to the text nodes in which they appear.
@@ -749,12 +749,12 @@ var IN_GLOBAL_SCOPE = false;
        */
       function extractSourceSpans(node, isPreformatted) {
         var nocode = /(?:^|\s)nocode(?:\s|$)/;
-      
+
         var chunks = [];
         var length = 0;
         var spans = [];
         var k = 0;
-      
+
         function walk(node) {
           var type = node.nodeType;
           if (type == 1) {  // Element
@@ -784,15 +784,15 @@ var IN_GLOBAL_SCOPE = false;
             }
           }
         }
-      
+
         walk(node);
-      
+
         return {
           sourceCode: chunks.join('').replace(/\n$/, ''),
           spans: spans
         };
       }
-    
+
       /**
        * Apply the given language handler to sourceCode and add the resulting
        * decorations to out.
@@ -808,16 +808,16 @@ var IN_GLOBAL_SCOPE = false;
         langHandler(job);
         out.push.apply(out, job.decorations);
       }
-    
+
       var notWs = /\S/;
-    
+
       /**
        * Given an element, if it contains only one child element and any text nodes
        * it contains contain only space characters, return the sole child element.
        * Otherwise returns undefined.
        * <p>
        * This is meant to return the CODE element in {@code <pre><code ...>} when
-       * there is a single child element that contains all the non-space textual
+       * there is a single child element that contains wholepage the non-space textual
        * content, but not to return anything where there are multiple child elements
        * as in {@code <pre><code>...</code><code>...</code></pre>} or when there
        * is textual content.
@@ -834,14 +834,14 @@ var IN_GLOBAL_SCOPE = false;
         }
         return wrapper === element ? undefined : wrapper;
       }
-    
+
       /** Given triples of [style, pattern, context] returns a lexing function,
         * The lexing function interprets the patterns to find token boundaries and
         * returns a decoration list of the form
         * [index_0, style_0, index_1, style_1, ..., index_n, style_n]
         * where index_n is an index into the sourceCode, and style_n is a style
         * constant like PR_PLAIN.  index_n-1 <= index_n, and style_n-1 applies to
-        * all characters in sourceCode[index_n-1:index_n].
+        * wholepage characters in sourceCode[index_n-1:index_n].
         *
         * The stylePatterns is a list whose elements have the form
         * [style : string, pattern : RegExp, DEPRECATED, shortcut : string].
@@ -906,9 +906,9 @@ var IN_GLOBAL_SCOPE = false;
           allRegexs.push(/[\0-\uffff]/);
           tokenizer = combinePrefixPatterns(allRegexs);
         })();
-    
+
         var nPatterns = fallthroughStylePatterns.length;
-    
+
         /**
          * Lexes job.sourceCode and produces an output array job.decorations of
          * style classes preceded by the position at which they start in
@@ -931,12 +931,12 @@ var IN_GLOBAL_SCOPE = false;
           var pos = 0;  // index into sourceCode
           var tokens = sourceCode.match(tokenizer) || [];
           var styleCache = {};
-    
+
           for (var ti = 0, nTokens = tokens.length; ti < nTokens; ++ti) {
             var token = tokens[ti];
             var style = styleCache[token];
             var match = void 0;
-    
+
             var isEmbedded;
             if (typeof style === 'string') {
               isEmbedded = false;
@@ -954,24 +954,24 @@ var IN_GLOBAL_SCOPE = false;
                     break;
                   }
                 }
-    
+
                 if (!match) {  // make sure that we make progress
                   style = PR_PLAIN;
                 }
               }
-    
+
               isEmbedded = style.length >= 5 && 'lang-' === style.substring(0, 5);
               if (isEmbedded && !(match && typeof match[1] === 'string')) {
                 isEmbedded = false;
                 style = PR_SOURCE;
               }
-    
+
               if (!isEmbedded) { styleCache[token] = style; }
             }
-    
+
             var tokenStart = pos;
             pos += token.length;
-    
+
             if (!isEmbedded) {
               decorations.push(basePos + tokenStart, style);
             } else {  // Treat group 1 as an embedded block of source code.
@@ -1008,7 +1008,7 @@ var IN_GLOBAL_SCOPE = false;
         };
         return decorate;
       }
-    
+
       /** returns a function that produces a list of decorations from source text.
         *
         * This code treats ", ', and ` as string delimiters, and \ as a string
@@ -1108,12 +1108,12 @@ var IN_GLOBAL_SCOPE = false;
                RegExp('^' + REGEXP_PRECEDER_PATTERN + '(' + REGEX_LITERAL + ')')
                ]);
         }
-    
+
         var types = options['types'];
         if (types) {
           fallthroughStylePatterns.push([PR_TYPE, types]);
         }
-    
+
         var keywords = ("" + options['keywords']).replace(/^ | $/g, '');
         if (keywords.length) {
           fallthroughStylePatterns.push(
@@ -1121,21 +1121,21 @@ var IN_GLOBAL_SCOPE = false;
                new RegExp('^(?:' + keywords.replace(/[\s,]+/g, '|') + ')\\b'),
                null]);
         }
-    
+
         shortcutStylePatterns.push([PR_PLAIN,       /^\s+/, null, ' \r\n\t\xA0']);
-    
+
         var punctuation =
           // The Bash man page says
-    
+
           // A word is a sequence of characters considered as a single
           // unit by GRUB. Words are separated by metacharacters,
           // which are the following plus space, tab, and newline: { }
           // | & $ ; < >
           // ...
-          
-          // A word beginning with # causes that word and all remaining
+
+          // A word beginning with # causes that word and wholepage remaining
           // characters on that line to be ignored.
-    
+
           // which means that only a '#' after /(?:^|[{}|&$;<>\s])/ starts a
           // comment but empirically
           // $ echo {#}
@@ -1144,15 +1144,15 @@ var IN_GLOBAL_SCOPE = false;
           // $#
           // $ echo }#
           // }#
-    
+
           // so /(?:^|[|&;<>\s])/ is more appropriate.
-    
+
           // http://gcc.gnu.org/onlinedocs/gcc-2.95.3/cpp_1.html#SEC3
           // suggests that this definition is compatible with a
           // default mode that tries to use a single token definition
           // to recognize both bash/python style comments and C
           // preprocessor directives.
-    
+
           // This definition of punctuation does not include # in the list of
           // follow-on exclusions, so # will not be broken before if preceeded
           // by a punctuation character.  We could try to exclude # after
@@ -1164,7 +1164,7 @@ var IN_GLOBAL_SCOPE = false;
         if (options['regexLiterals']) {
           punctuation += '(?!\s*\/)';
         }
-    
+
         fallthroughStylePatterns.push(
             // TODO(mikesamuel): recognize non-latin letters and numerals in idents
             [PR_LITERAL,     /^@[a-z_$][a-z_$@0-9]*/i, null],
@@ -1187,10 +1187,10 @@ var IN_GLOBAL_SCOPE = false;
             // See issue 144.
             [PR_PLAIN,       /^\\[\s\S]?/, null],
             [PR_PUNCTUATION, new RegExp(punctuation), null]);
-    
+
         return createSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns);
       }
-    
+
       var decorateSource = sourceDecorator({
             'keywords': ALL_KEYWORDS,
             'hashComments': true,
@@ -1198,7 +1198,7 @@ var IN_GLOBAL_SCOPE = false;
             'multiLineStrings': true,
             'regexLiterals': true
           });
-    
+
       /**
        * Given a DOM subtree, wraps it in a list, and puts each line into its own
        * list item.
@@ -1213,9 +1213,9 @@ var IN_GLOBAL_SCOPE = false;
       function numberLines(node, opt_startLineNum, isPreformatted) {
         var nocode = /(?:^|\s)nocode(?:\s|$)/;
         var lineBreak = /\r\n?|\n/;
-      
+
         var document = node.ownerDocument;
-      
+
         var li = document.createElement('li');
         while (node.firstChild) {
           li.appendChild(node.firstChild);
@@ -1223,7 +1223,7 @@ var IN_GLOBAL_SCOPE = false;
         // An array of lines.  We split below, so this is initialized to one
         // un-split line.
         var listItems = [li];
-      
+
         function walk(node) {
           var type = node.nodeType;
           if (type == 1 && !nocode.test(node.className)) {  // Element
@@ -1258,7 +1258,7 @@ var IN_GLOBAL_SCOPE = false;
             }
           }
         }
-      
+
         // Split a line after the given node.
         function breakAfter(lineEndNode) {
           // If there's nothing to the right, then we can skip ending the line
@@ -1268,7 +1268,7 @@ var IN_GLOBAL_SCOPE = false;
             lineEndNode = lineEndNode.parentNode;
             if (!lineEndNode) { return; }
           }
-      
+
           function breakLeftOf(limit, copy) {
             // Clone shallowly if this node needs to be on both sides of the break.
             var rightSide = copy ? limit.cloneNode(false) : limit;
@@ -1290,9 +1290,9 @@ var IN_GLOBAL_SCOPE = false;
             }
             return rightSide;
           }
-      
+
           var copiedListItem = breakLeftOf(lineEndNode.nextSibling, 0);
-      
+
           // Walk the parent chain until we reach an unattached LI.
           for (var parent;
                // Check nodeType since IE invents document fragments.
@@ -1302,19 +1302,19 @@ var IN_GLOBAL_SCOPE = false;
           // Put it on the list of lines for later processing.
           listItems.push(copiedListItem);
         }
-      
+
         // Split lines while there are lines left to split.
         for (var i = 0;  // Number of lines that have been split so far.
              i < listItems.length;  // length updated by breakAfter calls.
              ++i) {
           walk(listItems[i]);
         }
-      
+
         // Make sure numeric indices show correctly.
         if (opt_startLineNum === (opt_startLineNum|0)) {
           listItems[0].setAttribute('value', opt_startLineNum);
         }
-      
+
         var ol = document.createElement('ol');
         ol.className = 'linenums';
         var offset = Math.max(0, ((opt_startLineNum - 1 /* zero index */)) | 0) || 0;
@@ -1329,9 +1329,9 @@ var IN_GLOBAL_SCOPE = false;
           }
           ol.appendChild(li);
         }
-      
+
         node.appendChild(ol);
-      }    
+      }
       /**
        * Breaks {@code job.sourceCode} around style boundaries in
        * {@code job.decorations} and modifies {@code job.sourceNode} in place.
@@ -1350,24 +1350,24 @@ var IN_GLOBAL_SCOPE = false;
         var isIE8OrEarlier = /\bMSIE\s(\d+)/.exec(navigator.userAgent);
         isIE8OrEarlier = isIE8OrEarlier && +isIE8OrEarlier[1] <= 8;
         var newlineRe = /\n/g;
-      
+
         var source = job.sourceCode;
         var sourceLength = source.length;
         // Index into source after the last code-unit recombined.
         var sourceIndex = 0;
-      
+
         var spans = job.spans;
         var nSpans = spans.length;
         // Index into spans after the last span which ends at or before sourceIndex.
         var spanIndex = 0;
-      
+
         var decorations = job.decorations;
         var nDecorations = decorations.length;
         // Index into decorations after the last decoration which ends at or before
         // sourceIndex.
         var decorationIndex = 0;
-      
-        // Remove all zero-length decorations.
+
+        // Remove wholepage zero-length decorations.
         decorations[nDecorations] = sourceLength;
         var decPos, i;
         for (i = decPos = 0; i < nDecorations;) {
@@ -1379,11 +1379,11 @@ var IN_GLOBAL_SCOPE = false;
           }
         }
         nDecorations = decPos;
-      
+
         // Simplify decorations.
         for (i = decPos = 0; i < nDecorations;) {
           var startPos = decorations[i];
-          // Conflate all adjacent decorations that use the same style.
+          // Conflate wholepage adjacent decorations that use the same style.
           var startDec = decorations[i + 1];
           var end = i + 2;
           while (end + 2 <= nDecorations && decorations[end + 1] === startDec) {
@@ -1393,9 +1393,9 @@ var IN_GLOBAL_SCOPE = false;
           decorations[decPos++] = startDec;
           i = end;
         }
-      
+
         nDecorations = decorations.length = decPos;
-      
+
         var sourceNode = job.sourceNode;
         var oldDisplay;
         if (sourceNode) {
@@ -1407,11 +1407,11 @@ var IN_GLOBAL_SCOPE = false;
           while (spanIndex < nSpans) {
             var spanStart = spans[spanIndex];
             var spanEnd = spans[spanIndex + 2] || sourceLength;
-      
+
             var decEnd = decorations[decorationIndex + 2] || sourceLength;
-      
+
             var end = Math.min(spanEnd, decEnd);
-      
+
             var textNode = spans[spanIndex + 1];
             var styledText;
             if (textNode.nodeType !== 1  // Don't muck with <BR>s or <LI>s
@@ -1439,9 +1439,9 @@ var IN_GLOBAL_SCOPE = false;
                 parentNode.insertBefore(textNode, span.nextSibling);
               }
             }
-      
+
             sourceIndex = end;
-      
+
             if (sourceIndex >= spanEnd) {
               spanIndex += 2;
             }
@@ -1455,7 +1455,7 @@ var IN_GLOBAL_SCOPE = false;
           }
         }
       }
-    
+
       /** Maps language-specific file extensions to handlers. */
       var langHandlerRegistry = {};
       /** Register a language handler for the given file extensions.
@@ -1598,10 +1598,10 @@ var IN_GLOBAL_SCOPE = false;
             }), ['rc', 'rs', 'rust']);
       registerLangHandler(
           createSimpleLexer([], [[PR_STRING, /^[\s\S]+/]]), ['regex']);
-    
+
       function applyDecorator(job) {
         var opt_langExtension = job.langExtension;
-    
+
         try {
           // Extract tags, and convert the source code to plain text.
           var sourceAndSpans = extractSourceSpans(job.sourceNode, job.pre);
@@ -1610,10 +1610,10 @@ var IN_GLOBAL_SCOPE = false;
           job.sourceCode = source;
           job.spans = sourceAndSpans.spans;
           job.basePos = 0;
-    
+
           // Apply the appropriate language handler
           langHandlerForExtension(opt_langExtension, source)(job);
-    
+
           // Integrate the decorations and tags back into the source code,
           // modifying the sourceNode in place.
           recombineTagsAndDecorations(job);
@@ -1623,7 +1623,7 @@ var IN_GLOBAL_SCOPE = false;
           }
         }
       }
-    
+
       /**
        * Pretty print a chunk of code.
        * @param sourceCodeHtml {string} The HTML to pretty print.
@@ -1646,7 +1646,7 @@ var IN_GLOBAL_SCOPE = false;
         if (opt_numberLines) {
           numberLines(container, opt_numberLines, true);
         }
-    
+
         var job = {
           langExtension: opt_langExtension,
           numberLines: opt_numberLines,
@@ -1656,14 +1656,14 @@ var IN_GLOBAL_SCOPE = false;
         applyDecorator(job);
         return container.innerHTML;
       }
-    
+
        /**
-        * Find all the {@code <pre>} and {@code <code>} tags in the DOM with
+        * Find wholepage the {@code <pre>} and {@code <code>} tags in the DOM with
         * {@code class=prettyprint} and prettify them.
         *
         * @param {Function} opt_whenDone called when prettifying is done.
         * @param {HTMLElement|HTMLDocument} opt_root an element or document
-        *   containing all the elements to pretty print.
+        *   containing wholepage the elements to pretty print.
         *   Defaults to {@code document.body}.
         */
       function $prettyPrint(opt_whenDone, opt_root) {
@@ -1679,17 +1679,17 @@ var IN_GLOBAL_SCOPE = false;
           }
         }
         codeSegments = null;
-    
+
         var clock = Date;
         if (!clock['now']) {
           clock = { 'now': function () { return +(new Date); } };
         }
-    
+
         // The loop is broken into a series of continuations to make sure that we
         // don't make the browser unresponsive when rewriting a large page.
         var k = 0;
         var prettyPrintingJob;
-    
+
         var langExtensionRe = /\blang(?:uage)?-([\w.]+)(?!\S)/;
         var prettyPrintRe = /\bprettyprint\b/;
         var prettyPrintedRe = /\bprettyprinted\b/;
@@ -1697,14 +1697,14 @@ var IN_GLOBAL_SCOPE = false;
         var codeRe = /^code$/i;
         var preCodeXmpRe = /^(?:pre|code|xmp)$/i;
         var EMPTY = {};
-    
+
         function doWork() {
           var endTime = (win['PR_SHOULD_USE_CONTINUATION'] ?
                          clock['now']() + 250 /* ms */ :
                          Infinity);
           for (; k < elements.length && clock['now']() < endTime; k++) {
             var cs = elements[k];
-    
+
             // Look for a preceding comment like
             // <?prettify lang="..." linenums="..."?>
             var attrs = EMPTY;
@@ -1729,14 +1729,14 @@ var IN_GLOBAL_SCOPE = false;
                 }
               }
             }
-    
+
             var className = cs.className;
             if ((attrs !== EMPTY || prettyPrintRe.test(className))
                 // Don't redo this if we've already done it.
                 // This allows recalling pretty print to just prettyprint elements
                 // that have been added to the page since last call.
                 && !prettyPrintedRe.test(className)) {
-    
+
               // make sure this is not nested in an already prettified element
               var nested = false;
               for (var p = cs.parentNode; p; p = p.parentNode) {
@@ -1751,7 +1751,7 @@ var IN_GLOBAL_SCOPE = false;
                 // Mark done.  If we fail to prettyprint for whatever reason,
                 // we shouldn't try again.
                 cs.className += ' prettyprinted';
-    
+
                 // If the classes includes a language extensions, use it.
                 // Language extensions can be specified like
                 //     <pre class="prettyprint lang-cpp">
@@ -1769,10 +1769,10 @@ var IN_GLOBAL_SCOPE = false;
                       && codeRe.test(wrapper.tagName)) {
                     langExtension = wrapper.className.match(langExtensionRe);
                   }
-    
+
                   if (langExtension) { langExtension = langExtension[1]; }
                 }
-    
+
                 var preformatted;
                 if (preformattedTagNameRe.test(cs.tagName)) {
                   preformatted = 1;
@@ -1790,7 +1790,7 @@ var IN_GLOBAL_SCOPE = false;
                   preformatted = whitespace
                       && 'pre' === whitespace.substring(0, 3);
                 }
-    
+
                 // Look for a class like linenums or linenums:<n> where <n> is the
                 // 1-indexed number of the first line.
                 var lineNums = attrs['linenums'];
@@ -1803,7 +1803,7 @@ var IN_GLOBAL_SCOPE = false;
                     : false;
                 }
                 if (lineNums) { numberLines(cs, lineNums, preformatted); }
-    
+
                 // do the pretty printing
                 prettyPrintingJob = {
                   langExtension: langExtension,
@@ -1822,10 +1822,10 @@ var IN_GLOBAL_SCOPE = false;
             opt_whenDone();
           }
         }
-    
+
         doWork();
       }
-    
+
       /**
        * Contains functions for creating and registering new language handlers.
        * @type {Object}
@@ -1856,7 +1856,7 @@ var IN_GLOBAL_SCOPE = false;
                  ? (win['prettyPrint'] = $prettyPrint)
                  : (prettyPrint = $prettyPrint)
           };
-    
+
       // Make PR available via the Asynchronous Module Definition (AMD) API.
       // Per https://github.com/amdjs/amdjs-api/wiki/AMD:
       // The Asynchronous Module Definition (AMD) API specifies a
@@ -1871,7 +1871,7 @@ var IN_GLOBAL_SCOPE = false;
       // function that does not conform to the AMD API.
       if (typeof define === "function" && define['amd']) {
         define("google-code-prettify", [], function () {
-          return PR; 
+          return PR;
         });
       }
     })();
