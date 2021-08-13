@@ -19,7 +19,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_7.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_7.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -44,7 +44,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_8.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_8.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -69,7 +69,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_9.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_9.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -94,7 +94,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_10.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_10.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -119,7 +119,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_11.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_11.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -144,7 +144,7 @@
                                     <div class="col-sm-4 grid-margin">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_12.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_12.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -185,7 +185,7 @@
                                                 <div class="col-sm-4">
                                                     <div class="rotate-img">
                                                         <img
-                                                            src="{{url('assets/images/magazine/Magzine_1.jpg')}}"
+                                                            src="{{url('frontend/assets/images/magazine/Magzine_1.jpg')}}"
                                                             alt="banner"
                                                             class="img-fluid"
                                                         />
@@ -210,7 +210,7 @@
                                                 <div class="col-sm-4">
                                                     <div class="rotate-img">
                                                         <img
-                                                            src="{{url('assets/images/magazine/Magzine_2.jpg')}}"
+                                                            src="{{url('frontend/assets/images/magazine/Magzine_2.jpg')}}"
                                                             alt="banner"
                                                             class="img-fluid"
                                                         />
@@ -235,7 +235,7 @@
                                                 <div class="col-sm-4">
                                                     <div class="rotate-img">
                                                         <img
-                                                            src="{{url('assets/images/magazine/Magzine_3.jpg')}}"
+                                                            src="{{url('frontend/assets/images/magazine/Magzine_3.jpg')}}"
                                                             alt="banner"
                                                             class="img-fluid"
                                                         />
@@ -252,7 +252,7 @@
                                     <div class="mb-4">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_4.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_4.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -267,7 +267,7 @@
                                     <div class="mb-4">
                                         <div class="rotate-img">
                                             <img
-                                                src="{{url('assets/images/magazine/Magzine_5.jpg')}}"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_5.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />
@@ -282,7 +282,7 @@
                                     <div class="mb-4">
                                         <div class="rotate-img">
                                             <img
-                                                src="../assets/images/magazine/Magzine_6.jpg"
+                                                src="{{url('frontend/assets/images/magazine/Magzine_6.jpg')}}"
                                                 alt="banner"
                                                 class="img-fluid"
                                             />

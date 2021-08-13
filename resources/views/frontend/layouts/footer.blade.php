@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-5">
-                        <img src="{{url('frontend/assets/images/logo.svg')}}" class="footer-logo" alt=""/>
+                        <img src="{{url('frontend/assets/images/logo.png')}}" class="footer-logo" alt=""/>
                         <h5 class="font-weight-normal mt-4 mb-5">
                             Newspaper is your news, entertainment, music fashion website. We
                             provide you with the latest breaking news and videos straight from
