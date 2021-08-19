@@ -71,7 +71,7 @@
                     <div class="navbar-bottom">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <a class="navbar-brand" href="#"
+                                <a class="navbar-brand" href="{{route('index')}}"
                                 ><img src="{{url('frontend/assets/images/logo.png')}}" alt=""
                                     /></a>
                             </div>
