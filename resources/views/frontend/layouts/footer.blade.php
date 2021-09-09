@@ -138,12 +138,12 @@
                     <div class="col-sm-12">
                         <div class="d-sm-flex justify-content-between align-items-center">
                             <div class="fs-14 font-weight-600">
-                                © 2021 @ <a href="https://www.nepaltime.com/" target="_blank"
+                                © {{date('Y')}} <a href="https://www.nepaltime.com/" target="_blank"
                                             class="text-white"> NEPALTIME</a>. All rights reserved.
                             </div>
                             <div class="fs-14 font-weight-600">
                                 Handcrafted by <a href="https://www.nepaltime.com/" target="_blank"
-                                                  class="text-white">nepaltime</a>
+                                                  class="text-white">NEPALTIME</a>
                             </div>
                         </div>
                     </div>

@@ -162,8 +162,8 @@
 
                     </div>
                     <div class="d-flex">
-                        <span class="mr-3 text-danger">Wed, March 4, 2020</span>
-                        <span class="text-danger">30°C,London</span>
+                        <span class="mr-3 text-danger">{{date('D-M-Y')}}</span>
+                        <span class="text-danger">30°C,Kathmandu</span>
                     </div>
                 </div>
             </div>
