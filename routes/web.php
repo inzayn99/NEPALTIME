@@ -73,7 +73,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'au
     });
 
 
-
+//---------Video---------------------//
     Route::group(['prefix' => 'Videos'], function () {
         Route::any('/', 'VideosController@index')->name('post');
         Route::any('/add-videos', 'VideosController@add')->name('add-videos ');
@@ -81,6 +81,16 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'au
         Route::any('delete-videos/{criteria?}', 'VideosController@delete')->name('delete-videos');
         Route::any('edit-videos/{criteria?}', 'VideosController@edit')->name('edit-videos');
         Route::any('edit-videos-action', 'VideosController@editAction')->name('edit-videos-action');
+
+    });
+    //----------Footer--------------------------------//
+    Route::group(['prefix' => 'Footer'], function () {
+        Route::any('/', 'FooterController@index')->name('show-footer');
+        Route::any('/add-footer', 'FooterController@add')->name('add-footer ');
+        Route::any('update-footer-status', 'FooterController@updateStatus')->name('update-footer-status');
+        Route::any('delete-footer/{criteria?}', 'FooterController@delete')->name('delete-footer');
+        Route::any('edit-footer/{criteria?}', 'FooterController@edit')->name('edit-footer');
+        Route::any('edit-footer-action', 'FooterController@editAction')->name('edit-footer-action');
 
     });
 
