@@ -15,18 +15,17 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::any('/art', 'ApplicationController@art')->name('art');
 
 
-
     Route::any('login', 'ApplicationController@login')->name('login');
 
 
-   /*Login And logout*/
-    Route::group(['prefix' => 'users','middleware'=>'auth:web'], function () {
+    /*Login And logout*/
+    Route::group(['prefix' => 'users', 'middleware' => 'auth:web'], function () {
         Route::any('/', 'ApplicationController@user')->name('users');
         Route::any('/logout', 'ApplicationController@logout')->name('logout');
 
 
     });
-/*End Login And Logout*/
+    /*End Login And Logout*/
 });
 
 Route::group(['namespace' => 'Backend'], function () {
@@ -91,6 +90,17 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'au
         Route::any('delete-footer/{criteria?}', 'FooterController@delete')->name('delete-footer');
         Route::any('edit-footer/{criteria?}', 'FooterController@edit')->name('edit-footer');
         Route::any('edit-footer-action', 'FooterController@editAction')->name('edit-footer-action');
+
+    });
+
+    //----------Footer--------------------------------//
+    Route::group(['prefix' => 'Banner'], function () {
+        Route::any('/', 'BannerPostController@index')->name('show-banner');
+        Route::any('/add-banner', 'BannerPostController@add')->name('add-footer ');
+        Route::any('update-banner-status', 'BannerPostController@updateStatus')->name('update-banner-status');
+        Route::any('delete-banner/{criteria?}', 'BannerPostController@delete')->name('delete-banner');
+        Route::any('edit-banner/{criteria?}', 'BannerPostController@edit')->name('edit-banner');
+        Route::any('edit-banner-action', 'BannerPostController@editAction')->name('edit-banner-action');
 
     });
 
